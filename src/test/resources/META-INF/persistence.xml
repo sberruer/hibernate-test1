@@ -12,9 +12,9 @@
 
         <properties>
             <!-- Configuring JDBC properties -->
-<!--             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:create.sql'\;RUNSCRIPT FROM 'classpath:data.sql'"/> -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:create.sql'\;RUNSCRIPT FROM 'classpath:data.sql'"/>
 <!--             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:C:/data/sample;INIT=RUNSCRIPT FROM 'classpath:create.sql'\;RUNSCRIPT FROM 'classpath:data.sql'"/> -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:C:/data/sample"/>
+<!--             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:C:/data/sample"/> -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
 
             <!-- Hibernate properties -->

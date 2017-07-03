@@ -1,6 +1,5 @@
 package fr.berruer.hibernate;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,15 +44,15 @@ public class Author {
 	return id;
     }
 
-    public boolean addEdition(Book book) {
-	Edition edition = new Edition();
-	edition.setDate(LocalDate.now());
-	edition.setAuthor(this);
-	edition.setBook(book);
-
-	book.setEdition(edition);
-	return editions.add(edition);
-    }
+    // public boolean addEdition(Book book) {
+    // Edition edition = new Edition();
+    // edition.setDate(LocalDate.now());
+    // edition.setAuthor(this);
+    // edition.setBook(book);
+    //
+    // book.setEdition(edition);
+    // return editions.add(edition);
+    // }
 
     public List<Edition> getEditions() {
 	return editions;

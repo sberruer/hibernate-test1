@@ -20,7 +20,7 @@ public class Book {
     private Long id;
     private String title;
 
-    @OneToOne(mappedBy = "book")
+    @OneToOne(mappedBy = "book", orphanRemoval = true)
     private Edition edition;
 
     public Long getId() {
@@ -40,9 +40,9 @@ public class Book {
 	return "Book{" + "id=" + id + ", title='" + title + '\'' + '}';
     }
 
-    public Edition getEdition() {
-	return edition;
-    }
+    // public Edition getEdition() {
+    // return edition;
+    // }
 
     public void setEdition(Edition edition) {
 	this.edition = edition;
