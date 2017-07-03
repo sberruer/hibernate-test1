@@ -1,5 +1,6 @@
 package fr.berruer.hibernate;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class Author {
     private String name;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Book> books = new ArrayList<Book>();
+    private List<Edition> editions = new ArrayList<Edition>();
 
     public String getFirstname() {
 	return firstname;
@@ -44,13 +45,18 @@ public class Author {
 	return id;
     }
 
-    public boolean addBook(Book book) {
-	book.setAuthor(this);
-	return books.add(book);
+    public boolean addEdition(Book book) {
+	Edition edition = new Edition();
+	edition.setDate(LocalDate.now());
+	edition.setAuthor(this);
+	edition.setBook(book);
+
+	book.setEdition(edition);
+	return editions.add(edition);
     }
 
-    public List<Book> getBooks() {
-	return books;
+    public List<Edition> getEditions() {
+	return editions;
     }
 
 }

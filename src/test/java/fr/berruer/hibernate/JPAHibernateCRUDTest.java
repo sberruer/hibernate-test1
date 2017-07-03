@@ -34,18 +34,23 @@ public class JPAHibernateCRUDTest extends JPAHibernateTest {
 	Book book2 = new Book();
 	book2.setTitle("Best seller");
 
-	author.addBook(book1);
-	author.addBook(book2);
+	author.addEdition(book1);
+	author.addEdition(book2);
 
 	em.getTransaction().begin();
+	em.persist(book1);
+	em.persist(book2);
 	em.persist(author);
 	em.getTransaction().commit();
 
 	LOGGER.info("fin de l'enregistrement");
+    }
 
+    @Test
+    public void testRemove_book() {
 	em.getTransaction().begin();
-	Author authorDB = em.find(Author.class, author.getId());
-	authorDB.getBooks().remove(0);
+	Author authorDB = em.find(Author.class, 1L);
+	authorDB.getEditions().remove(0);
 	em.getTransaction().commit();
 
 	// assertNotNull(author);

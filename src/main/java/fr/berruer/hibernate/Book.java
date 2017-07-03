@@ -3,11 +3,9 @@ package fr.berruer.hibernate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -22,12 +20,8 @@ public class Book {
     private Long id;
     private String title;
 
-    @ManyToOne
-    @JoinTable(name = "Book_Author", joinColumns = @JoinColumn(name = "id_book"), inverseJoinColumns = @JoinColumn(name = "id_author"))
-    private Author author;
-
-    public Book() {
-    }
+    @OneToOne(mappedBy = "book")
+    private Edition edition;
 
     public Long getId() {
 	return id;
@@ -46,11 +40,11 @@ public class Book {
 	return "Book{" + "id=" + id + ", title='" + title + '\'' + '}';
     }
 
-    public Author getAuthor() {
-	return author;
+    public Edition getEdition() {
+	return edition;
     }
 
-    public void setAuthor(Author author) {
-	this.author = author;
+    public void setEdition(Edition edition) {
+	this.edition = edition;
     }
 }
