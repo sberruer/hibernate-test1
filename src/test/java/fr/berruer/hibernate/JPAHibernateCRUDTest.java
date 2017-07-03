@@ -1,10 +1,12 @@
 package fr.berruer.hibernate;
 
-import static org.junit.Assert.assertNotNull;
-
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 public class JPAHibernateCRUDTest extends JPAHibernateTest {
+
+    private static final Logger LOGGER = Logger
+	    .getLogger(JPAHibernateCRUDTest.class);
 
     // @Test
     // public void testPersist_success() {
@@ -39,12 +41,17 @@ public class JPAHibernateCRUDTest extends JPAHibernateTest {
 	em.persist(author);
 	em.getTransaction().commit();
 
-	Author authorDB = em.find(Author.class, author.getId());
+	LOGGER.info("fin de l'enregistrement");
 
-	assertNotNull(author);
-	assertNotNull(author.getId());
-	assertNotNull(book1.getId());
-	assertNotNull(book2.getId());
+	em.getTransaction().begin();
+	Author authorDB = em.find(Author.class, author.getId());
+	authorDB.getBooks().remove(0);
+	em.getTransaction().commit();
+
+	// assertNotNull(author);
+	// assertNotNull(author.getId());
+	// assertNotNull(book1.getId());
+	// assertNotNull(book2.getId());
     }
 
 }
